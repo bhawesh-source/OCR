@@ -1,0 +1,28 @@
+.upper{
+    display: flex;
+    justify-content:space-around;
+}
+
+.TextField{
+    width: 70%;
+}
+.successText{
+    color: chartreuse;
+}
+.failureText{
+    color: rgb(235, 78, 78);
+}
+.TextFieldOutput{
+    margin-top: 0.5rem;
+    padding: 0.2rem;
+    padding-left: 0.5rem;
+    width: 90%;
+    min-height:12rem;
+    max-height: 15rem;
+    border: black 1px solid;
+    overflow-y: auto;
+    border-radius: 1rem;
+}
+.outputText{
+    font-size:x-large;
+}

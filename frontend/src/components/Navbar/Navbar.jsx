@@ -36,7 +36,6 @@ export default function ButtonAppBar() {
           </Typography>
 
           <Button color="inherit" onClick={()=>{history.push("/about")}}>About</Button>
-          <Button color="inherit">option2</Button>
           <Button color="inherit" onClick={()=>{history.push("/contributors")}}>Who are we</Button>
         </Toolbar>
       </AppBar>
