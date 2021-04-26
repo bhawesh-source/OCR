@@ -1,13 +1,39 @@
-.heading {
-  color: #bccfaa;
+.parent {
+  background-color: darkslategray;
+}
+.card {
+  outline: black;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  max-width: 300px;
+
+  display: inline;
+  text-align: center;
+}
+hr {
+  display: block;
+  margin-top: 0.5em;
+  margin-bottom: 0.5em;
+  margin-left: auto;
+  margin-right: auto;
+  border-style: inset;
+  border-width: 1px;
+}
+.title {
+  color: lightgreen;
+  font-size: 50px;
+}
+.title1 {
+  color: cyan;
+  font-size: 30px;
 }
 .sec {
-  background-color: cornsilk;
+  background-color: lightgrey;
 }
-.hl {
-  outline: 3px double rgb(32, 73, 32);
+hl {
+  /* outline: 3px double rgb(32, 73, 32); */
+  color: black;
 }
-.cardsList {
+/* .cardsList {
   z-index: 0;
   width: 100%;
   display: inline-block;
@@ -64,9 +90,9 @@
 @media all and (max-width: 500px) {
   .card-list {
     /* On small screens, we are no longer using row direction but column */
-    flex-direction: column;
-  }
-}
+/* flex-direction: column; */
+/* } */
+/* } */
 
 /*
   .card {

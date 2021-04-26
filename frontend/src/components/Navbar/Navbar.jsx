@@ -8,7 +8,7 @@ import Button from '@material-ui/core/Button';
 import styles from "./style.module.css"
 
 const useStyles = makeStyles((theme) => ({
-  root: {
+  root: { 
     flexGrow: 1,
   },
   menuButton: {
