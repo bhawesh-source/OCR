@@ -1,47 +1,41 @@
 const express = require('express')
 const fileUpload = require("express-fileupload")
 const fs=require("fs")
-const {spawn} = require('child_process');
+const {execFile} = require('child_process');
 
 const app = express()
 app.use(fileUpload())
-const port = 3000;
+const port = 3010;
 let fileName=""
 
-app.get('/heading', (req, res) => { 
- var dataToSend;
- const python = spawn('python3', ['main.py',"1.png"]);
- python.stdout.on('data', function (data) {
-  dataToSend = data.toString();
- });
- python.on('close', (code) => {
-    res.send(dataToSend)
- });
-})
 app.post('/upload/file',(req,res)=>{
     try{
         const {myFile} = req.files
-        fs.writeFileSync(`${myFile.name}`,myFile.data)
+        fs.writeFileSync(`./data/${myFile.name}`,myFile.data)
         fileName=myFile.name
     }
     catch(err){
         res.send(err)
     }
     finally{
-        console.log("here")
         res.send({status:"success"})
     }
     
 })
-app.get("./convert",(req,res)=>{
+app.get("/convert",(req,res)=>{
     var dataToSend;
-    const python = spawn('python3', ['script.py']);
-    python.stdout.on('data', function (data) {
+    const python = execFile('python3', ['engine/main.py',`${__dirname}/data/${fileName}`]);
+    python.stdout.on('data', function (data) {   
      dataToSend = data.toString();
+     console.log(dataToSend)
     });
+    python.on("error",(err)=>{
+        console.log("err",err)
+    })
     python.on('close', (code) => {
+       console.log("close",code) 
        res.send(dataToSend)
     });
 })
 
-app.listen(port, () => console.log(`listening on port ${port}!`))
+app.listen(port, () => console.log(`listening on port 3000!`))

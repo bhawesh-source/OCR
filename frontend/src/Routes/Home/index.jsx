@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { getHeading, uploadFile } from "../../services";
+import { getHeading, uploadFile, convertFile  } from "../../services";
 import { Button, TextField, LinearProgress } from "@material-ui/core";
 import style from "./style.module.css";
 
@@ -10,6 +10,8 @@ export default () => {
   const onFileChange = (event) => {
     console.log(event.target);
     if (selectedFile.name == "") setSelectedFile(event.target.files[0]);
+    setFileUploaded(0);
+    setOutput("")
   };
   const onFileUpload = async () => {
     const formData = new FormData();
@@ -22,10 +24,14 @@ export default () => {
         setFileUploaded(1);
       })
       .catch((err) => {
-        console.log(err);
         setFileUploaded(-1);
       });
   };
+  const handleConvert=async ()=>{
+    setOutput("!!loading")
+    const res=await convertFile();
+    setOutput(res)
+  }
   return (
     <React.Fragment>
       <br></br>
@@ -60,6 +66,7 @@ export default () => {
             variant="contained"
             component="label"
             className={style.convertButton}
+            onClick={handleConvert}
           >
             Convert
           </Button>
