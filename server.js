@@ -5,7 +5,7 @@ const {execFile} = require('child_process');
 
 const app = express()
 app.use(fileUpload())
-const port = 3010;
+const port = 3000;
 let fileName=""
 
 app.post('/upload/file',(req,res)=>{
@@ -24,7 +24,7 @@ app.post('/upload/file',(req,res)=>{
 })
 app.get("/convert",(req,res)=>{
     var dataToSend;
-    const python = execFile('python3', ['engine/main.py',`${__dirname}/data/${fileName}`]);
+    const python = execFile('python', ['engine/main.py',`${__dirname}/data/${fileName}`]);
     python.stdout.on('data', function (data) {   
      dataToSend = data.toString();
      console.log(dataToSend)
